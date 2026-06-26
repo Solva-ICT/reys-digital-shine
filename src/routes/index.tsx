@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import {
   ArrowRight,
+  ArrowUp,
   Globe,
   Share2,
   Target,
@@ -16,9 +17,23 @@ import {
   Star,
   Menu,
   X,
+  MessageCircle,
+  Send,
 } from "lucide-react";
+import { toast } from "sonner";
 import heroIllustration from "@/assets/hero-illustration.png";
 import reysLogo from "@/assets/reys-logo.png";
+import { ThemeToggle } from "@/components/theme-toggle";
+import { HexagonPattern } from "@/components/ui/hexagon-pattern";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -87,7 +102,7 @@ function GhostButton({
   return (
     <a
       href={href}
-      className={`inline-flex items-center justify-center gap-2 rounded-2xl border border-border bg-white px-5 py-3 text-sm font-semibold text-navy transition-all hover:border-navy/30 hover:bg-surface ${className}`}
+      className={`inline-flex items-center justify-center gap-2 rounded-2xl border border-border bg-card px-5 py-3 text-sm font-semibold text-navy transition-all hover:border-navy/30 hover:bg-surface ${className}`}
     >
       {children}
     </a>
@@ -101,6 +116,7 @@ const NAV = [
   { label: "Services", href: "#services" },
   { label: "Portfolio", href: "#portfolio" },
   { label: "About", href: "#about" },
+  { label: "FAQ", href: "#faq" },
   { label: "Testimonials", href: "#testimonials" },
   { label: "Contact", href: "#contact" },
 ];
@@ -142,6 +158,7 @@ function Nav() {
               ))}
             </nav>
             <div className="hidden items-center gap-2 md:flex">
+              <ThemeToggle />
               <GhostButton href="#portfolio" className="!px-4 !py-2 text-sm">
                 View Portfolio
               </GhostButton>
@@ -149,9 +166,12 @@ function Nav() {
                 Get Free Consultation
               </PrimaryButton>
             </div>
+            <div className="flex items-center gap-2 md:hidden">
+              <ThemeToggle />
+            </div>
             <button
               onClick={() => setOpen((v) => !v)}
-              className="inline-flex items-center justify-center rounded-xl border border-border bg-white p-2 text-navy md:hidden"
+              className="inline-flex items-center justify-center rounded-xl border border-border bg-card p-2 text-navy md:hidden"
               aria-label="Toggle menu"
             >
               {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -159,7 +179,7 @@ function Nav() {
           </div>
         </div>
         {open && (
-          <div className="mt-2 rounded-2xl border border-border bg-white p-3 shadow-[var(--shadow-soft)] md:hidden">
+          <div className="mt-2 rounded-2xl border border-border bg-card p-3 shadow-[var(--shadow-soft)] md:hidden">
             <nav className="flex flex-col">
               {NAV.map((i) => (
                 <a
@@ -187,35 +207,36 @@ function Nav() {
 
 function Hero() {
   return (
-    <section id="home" className="relative overflow-hidden pt-32 sm:pt-40">
-      {/* Background flourishes */}
-      <div className="pointer-events-none absolute inset-0 -z-10">
+    <section id="home" className="relative isolate overflow-hidden pt-32 sm:pt-40">
+      {/* Background */}
+      <HexagonPattern
+        hexagons={[
+          [1, 1],
+          [4, 4],
+          [2, 2],
+          [3, 4],
+          [5, 4],
+          [8, 2],
+          [6, 3],
+          [8, 5],
+          [10, 10],
+        ]}
+        className={cn(
+          "inset-x-0 top-0 bottom-auto z-0 h-[min(48%,480px)] skew-y-3",
+          "text-navy/15 dark:text-orange/18",
+          "[&_polygon]:stroke-current [&_polygon]:stroke-[0.75]",
+          "[&_polygon:not(.fill-none)]:fill-current/10",
+          "[mask-image:radial-gradient(ellipse_55%_50%_at_50%_35%,white,transparent)]",
+        )}
+      />
+      <div className="pointer-events-none absolute inset-0 z-0">
         <div className="absolute left-1/2 top-0 h-[600px] w-[1100px] -translate-x-1/2 rounded-full bg-[radial-gradient(closest-side,rgba(245,124,0,0.18),transparent_70%)] blur-2xl" />
-        <div className="absolute -left-32 top-40 h-72 w-72 rounded-full bg-[radial-gradient(closest-side,rgba(11,47,107,0.15),transparent)] blur-3xl" />
-        <svg
-          className="absolute inset-x-0 top-24 mx-auto opacity-[0.25]"
-          width="1100"
-          height="600"
-          viewBox="0 0 1100 600"
-          fill="none"
-        >
-          <defs>
-            <pattern id="grid" width="36" height="36" patternUnits="userSpaceOnUse">
-              <path d="M36 0H0V36" fill="none" stroke="#0B2F6B" strokeOpacity="0.08" />
-            </pattern>
-            <radialGradient id="fade" cx="50%" cy="40%" r="50%">
-              <stop offset="0%" stopColor="white" stopOpacity="0" />
-              <stop offset="100%" stopColor="white" stopOpacity="1" />
-            </radialGradient>
-          </defs>
-          <rect width="1100" height="600" fill="url(#grid)" />
-          <rect width="1100" height="600" fill="url(#fade)" />
-        </svg>
+        <div className="absolute -left-32 top-40 h-72 w-72 rounded-full bg-[radial-gradient(closest-side,rgba(11,47,107,0.15),transparent)] blur-3xl dark:bg-[radial-gradient(closest-side,rgba(245,124,0,0.12),transparent)]" />
       </div>
 
-      <div className="mx-auto max-w-7xl px-4 sm:px-6">
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6">
         <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
-          <span className="inline-flex items-center gap-2 rounded-full border border-border bg-white/70 px-3 py-1 text-xs font-medium text-navy shadow-[var(--shadow-soft)] backdrop-blur">
+          <span className="inline-flex items-center gap-2 rounded-full border border-border bg-card/70 px-3 py-1 text-xs font-medium text-navy shadow-[var(--shadow-soft)] backdrop-blur">
             <span className="h-1.5 w-1.5 rounded-full bg-orange" />
             Premium Digital Agency
           </span>
@@ -237,7 +258,7 @@ function Hero() {
         </div>
 
         <div className="relative mx-auto mt-14 max-w-5xl">
-          <div className="absolute -inset-x-12 -inset-y-6 -z-10 rounded-[40px] bg-[radial-gradient(closest-side,rgba(245,124,0,0.18),transparent_70%)] blur-2xl" />
+          <div className="absolute -inset-x-12 -inset-y-6 z-0 rounded-[40px] bg-[radial-gradient(closest-side,rgba(245,124,0,0.18),transparent_70%)] blur-2xl" />
           <div className="animate-float rounded-3xl">
             <img
               src={heroIllustration}
@@ -365,7 +386,7 @@ function Services() {
         {SERVICES.map((s) => (
           <div
             key={s.title}
-            className="group relative overflow-hidden rounded-3xl border border-border bg-white p-7 shadow-[var(--shadow-soft)] transition-all hover:-translate-y-1 hover:border-orange/40 hover:shadow-[var(--shadow-card)]"
+            className="group relative overflow-hidden rounded-3xl border border-border bg-card p-7 shadow-[var(--shadow-soft)] transition-all hover:-translate-y-1 hover:border-orange/40 hover:shadow-[var(--shadow-card)]"
           >
             <div className="absolute inset-x-0 -top-px h-px bg-gradient-to-r from-transparent via-orange/60 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
             <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-navy to-navy-deep text-white shadow-[var(--shadow-soft)] transition-transform group-hover:scale-110 group-hover:rotate-3">
@@ -422,12 +443,12 @@ function WhyChooseUs() {
       <div className="mx-auto grid max-w-7xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-2">
         <div className="relative">
           <div className="absolute inset-0 -z-10 rounded-[36px] bg-[radial-gradient(closest-side,rgba(245,124,0,0.18),transparent_70%)] blur-2xl" />
-          <div className="relative overflow-hidden rounded-3xl border border-border bg-white p-6 shadow-[var(--shadow-card)]">
+          <div className="relative overflow-hidden rounded-3xl border border-border bg-card p-6 shadow-[var(--shadow-card)]">
             <WorkflowIllustration />
           </div>
         </div>
         <div>
-          <span className="inline-flex items-center gap-2 rounded-full border border-border bg-white px-3 py-1 text-xs font-medium uppercase tracking-wider text-orange">
+          <span className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-xs font-medium uppercase tracking-wider text-orange">
             Why REYS
           </span>
           <h2 className="mt-4 font-display text-3xl font-bold leading-tight text-navy sm:text-5xl">
@@ -442,7 +463,7 @@ function WhyChooseUs() {
             {WHY.map((w) => (
               <div
                 key={w.title}
-                className="rounded-2xl border border-border bg-white p-5 transition-all hover:-translate-y-0.5 hover:shadow-[var(--shadow-soft)]"
+                className="rounded-2xl border border-border bg-card p-5 transition-all hover:-translate-y-0.5 hover:shadow-[var(--shadow-soft)]"
               >
                 <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-orange/10 text-orange">
                   <w.icon className="h-5 w-5" />
@@ -527,7 +548,7 @@ function Portfolio() {
         {PORTFOLIO.map((p) => (
           <div
             key={p.title}
-            className={`group relative overflow-hidden rounded-3xl border border-border bg-white shadow-[var(--shadow-soft)] transition-all hover:-translate-y-1 hover:shadow-[var(--shadow-card)] ${
+            className={`group relative overflow-hidden rounded-3xl border border-border bg-card shadow-[var(--shadow-soft)] transition-all hover:-translate-y-1 hover:shadow-[var(--shadow-card)] ${
               p.tall ? "sm:row-span-2" : ""
             }`}
           >
@@ -599,7 +620,7 @@ function Process() {
           <ol className="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-6">
             {STEPS.map((s, i) => (
               <li key={s} className="flex flex-col items-center text-center">
-                <div className="relative grid h-14 w-14 place-items-center rounded-2xl bg-white shadow-[var(--shadow-soft)]">
+                <div className="relative grid h-14 w-14 place-items-center rounded-2xl bg-card shadow-[var(--shadow-soft)]">
                   <span className="font-display text-lg font-bold text-gradient-brand">
                     {String(i + 1).padStart(2, "0")}
                   </span>
@@ -669,7 +690,7 @@ function Testimonials() {
           >
             {REVIEWS.map((r) => (
               <div key={r.name} className="w-full shrink-0 px-2">
-                <div className="rounded-3xl border border-border bg-white p-8 shadow-[var(--shadow-card)] sm:p-10">
+                <div className="rounded-3xl border border-border bg-card p-8 shadow-[var(--shadow-card)] sm:p-10">
                   <div className="flex gap-1 text-orange">
                     {Array.from({ length: 5 }).map((_, k) => (
                       <Star key={k} className="h-4 w-4 fill-current" />
@@ -743,6 +764,307 @@ function Tech() {
   );
 }
 
+/* ---------- Client Logos ---------- */
+
+const CLIENTS = [
+  "Northwind Group",
+  "Lumen Studio",
+  "Loop Commerce",
+  "Pulse Health",
+  "Atlas Analytics",
+  "Saffron Bistro",
+  "Ember Identity",
+  "Vertex Labs",
+];
+
+function ClientLogos() {
+  return (
+    <section className="border-y border-border bg-surface py-12 sm:py-16">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6">
+        <p className="text-center text-sm font-semibold uppercase tracking-wider text-muted-foreground">
+          Trusted by growing brands worldwide
+        </p>
+        <div className="relative mt-8 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_12%,black_88%,transparent)]">
+          <div className="flex animate-marquee gap-16 whitespace-nowrap">
+            {[...CLIENTS, ...CLIENTS].map((name, k) => (
+              <span
+                key={k}
+                className="font-display text-lg font-semibold text-navy/50 transition-colors hover:text-navy sm:text-xl"
+              >
+                {name}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------- FAQ ---------- */
+
+const FAQS = [
+  {
+    q: "How long does a typical website project take?",
+    a: "Most corporate and e-commerce sites take 4–8 weeks from kickoff to launch. We work in weekly sprints so you see progress every step of the way.",
+  },
+  {
+    q: "Do you work with clients outside Spain?",
+    a: "Yes — we're a remote-first agency working with teams worldwide. All communication is in English or Spanish, and we align with your timezone.",
+  },
+  {
+    q: "What's included in a free consultation?",
+    a: "A 30-minute strategy call where we review your goals, audit your current digital presence, and outline a tailored roadmap — no obligation.",
+  },
+  {
+    q: "Can you manage our ads and social media ongoing?",
+    a: "Absolutely. We offer monthly retainers for Meta ads, content creation, and social management with transparent reporting and KPI tracking.",
+  },
+  {
+    q: "How does pricing work?",
+    a: "We offer fixed-fee project scopes and monthly retainers. Every proposal includes a clear breakdown — no hidden fees or surprise invoices.",
+  },
+];
+
+function FAQ() {
+  return (
+    <section id="faq" className="bg-surface py-20 sm:py-28">
+      <div className="mx-auto max-w-3xl px-4 sm:px-6">
+        <SectionHeader
+          eyebrow="FAQ"
+          title={
+            <>
+              Questions?{" "}
+              <span className="text-gradient-brand">We've got answers</span>.
+            </>
+          }
+          sub="Everything you need to know before starting your project."
+        />
+        <Accordion type="single" collapsible className="mt-12 rounded-2xl border border-border bg-card px-6 shadow-[var(--shadow-soft)]">
+          {FAQS.map((f, i) => (
+            <AccordionItem key={f.q} value={`item-${i}`}>
+              <AccordionTrigger className="text-left font-semibold text-navy hover:no-underline">
+                {f.q}
+              </AccordionTrigger>
+              <AccordionContent className="text-muted-foreground">{f.a}</AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
+      </div>
+    </section>
+  );
+}
+
+/* ---------- Contact Form ---------- */
+
+function ContactForm() {
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setLoading(true);
+    const form = e.currentTarget;
+    const data = new FormData(form);
+    const name = data.get("name") as string;
+    const email = data.get("email") as string;
+    const message = data.get("message") as string;
+
+    setTimeout(() => {
+      const subject = encodeURIComponent(`Project inquiry from ${name}`);
+      const body = encodeURIComponent(
+        `Name: ${name}\nEmail: ${email}\n\n${message}`,
+      );
+      window.open(`mailto:reysdigital6@gmail.com?subject=${subject}&body=${body}`, "_blank");
+      toast.success("Thanks! Your message is ready to send — check your email client.");
+      form.reset();
+      setLoading(false);
+    }, 600);
+  };
+
+  return (
+    <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 sm:py-28">
+      <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
+        <div>
+          <span className="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-3 py-1 text-xs font-medium uppercase tracking-wider text-orange">
+            Get in touch
+          </span>
+          <h2 className="mt-4 font-display text-3xl font-bold leading-tight text-navy sm:text-5xl">
+            Let's build something{" "}
+            <span className="text-gradient-brand">great together</span>.
+          </h2>
+          <p className="mt-4 text-muted-foreground">
+            Tell us about your project and we'll respond within 24 hours with
+            next steps and a tailored proposal.
+          </p>
+          <div className="mt-8 space-y-4">
+            <a
+              href="mailto:reysdigital6@gmail.com"
+              className="flex items-center gap-3 rounded-2xl border border-border bg-card p-4 transition-colors hover:border-orange/40"
+            >
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-orange/10 text-orange">
+                <Mail className="h-5 w-5" />
+              </div>
+              <div>
+                <div className="text-sm font-medium text-muted-foreground">Email us</div>
+                <div className="font-semibold text-navy">reysdigital6@gmail.com</div>
+              </div>
+            </a>
+            <a
+              href="https://wa.me/34687232524"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 rounded-2xl border border-border bg-card p-4 transition-colors hover:border-orange/40"
+            >
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-green-500/10 text-green-600 dark:text-green-400">
+                <MessageCircle className="h-5 w-5" />
+              </div>
+              <div>
+                <div className="text-sm font-medium text-muted-foreground">WhatsApp</div>
+                <div className="font-semibold text-navy">252 687232524</div>
+              </div>
+            </a>
+          </div>
+        </div>
+        <form
+          onSubmit={handleSubmit}
+          className="rounded-3xl border border-border bg-card p-6 shadow-[var(--shadow-card)] sm:p-8"
+        >
+          <div className="space-y-4">
+            <div>
+              <label htmlFor="name" className="mb-1.5 block text-sm font-medium text-navy">
+                Full name
+              </label>
+              <Input id="name" name="name" required placeholder="Jane Smith" className="h-11 rounded-xl" />
+            </div>
+            <div>
+              <label htmlFor="email" className="mb-1.5 block text-sm font-medium text-navy">
+                Email address
+              </label>
+              <Input
+                id="email"
+                name="email"
+                type="email"
+                required
+                placeholder="jane@company.com"
+                className="h-11 rounded-xl"
+              />
+            </div>
+            <div>
+              <label htmlFor="service" className="mb-1.5 block text-sm font-medium text-navy">
+                Service interested in
+              </label>
+              <select
+                id="service"
+                name="service"
+                className="flex h-11 w-full rounded-xl border border-input bg-transparent px-3 text-sm focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+              >
+                <option value="">Select a service</option>
+                {SERVICES.map((s) => (
+                  <option key={s.title} value={s.title}>
+                    {s.title}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div>
+              <label htmlFor="message" className="mb-1.5 block text-sm font-medium text-navy">
+                Project details
+              </label>
+              <Textarea
+                id="message"
+                name="message"
+                required
+                rows={4}
+                placeholder="Tell us about your goals, timeline, and budget..."
+                className="rounded-xl"
+              />
+            </div>
+          </div>
+          <button
+            type="submit"
+            disabled={loading}
+            className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-orange px-6 py-3.5 text-sm font-semibold text-white shadow-[var(--shadow-glow)] transition-all hover:-translate-y-0.5 disabled:opacity-70"
+          >
+            {loading ? "Sending..." : "Send message"}
+            <Send className="h-4 w-4" />
+          </button>
+        </form>
+      </div>
+    </section>
+  );
+}
+
+/* ---------- Newsletter ---------- */
+
+function Newsletter() {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    e.currentTarget.reset();
+    toast.success("You're subscribed! Watch your inbox for growth tips.");
+  };
+
+  return (
+    <div className="rounded-2xl border border-border bg-surface p-6">
+      <div className="text-sm font-semibold text-navy">Stay in the loop</div>
+      <p className="mt-1 text-sm text-muted-foreground">
+        Monthly tips on web, ads, and brand growth.
+      </p>
+      <form onSubmit={handleSubmit} className="mt-4 flex gap-2">
+        <Input
+          type="email"
+          required
+          placeholder="you@email.com"
+          className="h-10 flex-1 rounded-xl"
+        />
+        <button
+          type="submit"
+          className="shrink-0 rounded-xl bg-navy px-4 text-sm font-semibold text-white transition-colors hover:bg-navy-deep"
+        >
+          Join
+        </button>
+      </form>
+    </div>
+  );
+}
+
+/* ---------- Back to top & WhatsApp ---------- */
+
+function BackToTop() {
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setVisible(window.scrollY > 600);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  if (!visible) return null;
+
+  return (
+    <button
+      type="button"
+      onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+      className="fixed bottom-24 right-6 z-40 inline-flex h-11 w-11 items-center justify-center rounded-full border border-border bg-card text-navy shadow-[var(--shadow-card)] transition-all hover:-translate-y-0.5 hover:border-orange/40"
+      aria-label="Back to top"
+    >
+      <ArrowUp className="h-5 w-5" />
+    </button>
+  );
+}
+
+function WhatsAppFloat() {
+  return (
+    <a
+      href="https://wa.me/34687232524"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="fixed bottom-6 right-6 z-40 inline-flex h-14 w-14 items-center justify-center rounded-full bg-green-500 text-white shadow-lg transition-transform hover:scale-105 hover:shadow-xl"
+      aria-label="Chat on WhatsApp"
+    >
+      <MessageCircle className="h-6 w-6" />
+    </a>
+  );
+}
+
 /* ---------- CTA ---------- */
 
 function CTA() {
@@ -794,7 +1116,7 @@ function CTA() {
 
 function Footer() {
   return (
-    <footer className="border-t border-border bg-white">
+    <footer className="border-t border-border bg-card">
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-16 sm:px-6 md:grid-cols-4">
         <div className="md:col-span-2">
           <Logo />
@@ -810,7 +1132,7 @@ function Footer() {
             </div>
             <div>
               <a href="tel:687232524" className="hover:text-orange">
-                +34 687 232 524
+                252 687232524
               </a>
             </div>
             <div className="text-muted-foreground">Remote • Worldwide</div>
@@ -839,6 +1161,9 @@ function Footer() {
               </li>
             ))}
           </ul>
+          <div className="mt-8">
+            <Newsletter />
+          </div>
         </div>
       </div>
       <div className="border-t border-border">
@@ -863,15 +1188,20 @@ function Landing() {
       <main>
         <Hero />
         <Stats />
+        <ClientLogos />
         <Services />
         <WhyChooseUs />
         <Portfolio />
         <Process />
+        <FAQ />
         <Testimonials />
         <Tech />
+        <ContactForm />
         <CTA />
       </main>
       <Footer />
+      <BackToTop />
+      <WhatsAppFloat />
     </div>
   );
 }

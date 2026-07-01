@@ -59,7 +59,7 @@ export function HeroSection() {
           </p>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
             <PrimaryButton href="#contact">Get Free Consultation</PrimaryButton>
-            <GhostButton href="#portfolio">View Portfolio</GhostButton>
+            <GhostButton href="#pricing">View Pricing</GhostButton>
           </div>
         </div>
 

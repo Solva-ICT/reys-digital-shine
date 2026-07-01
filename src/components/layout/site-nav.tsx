@@ -41,8 +41,8 @@ export function SiteNav() {
             </nav>
             <div className="hidden items-center gap-2 md:flex">
               <ThemeToggle />
-              <GhostButton href="#portfolio" className="!px-4 !py-2 text-sm">
-                View Portfolio
+              <GhostButton href="#pricing" className="!px-4 !py-2 text-sm">
+                View Pricing
               </GhostButton>
               <PrimaryButton href="#contact" className="!px-4 !py-2 text-sm">
                 Get Free Consultation
@@ -75,7 +75,7 @@ export function SiteNav() {
               ))}
             </nav>
             <div className="mt-2 flex flex-col gap-2">
-              <GhostButton href="#portfolio">View Portfolio</GhostButton>
+              <GhostButton href="#pricing">View Pricing</GhostButton>
               <PrimaryButton href="#contact">Get Free Consultation</PrimaryButton>
             </div>
           </div>

@@ -6,7 +6,7 @@ import { CtaSection } from "@/features/landing/sections/cta-section";
 import { FaqSection } from "@/features/landing/sections/faq-section";
 import { BackToTop, WhatsAppFloat } from "@/features/landing/sections/floating-actions";
 import { HeroSection } from "@/features/landing/sections/hero-section";
-import { PortfolioSection } from "@/features/landing/sections/portfolio-section";
+import { PricingSection } from "@/features/landing/sections/pricing-section";
 import { ProcessSection } from "@/features/landing/sections/process-section";
 import { ServicesSection } from "@/features/landing/sections/services-section";
 import { StatsSection } from "@/features/landing/sections/stats-section";
@@ -24,7 +24,7 @@ export function LandingPage() {
         <ClientLogosSection />
         <ServicesSection />
         <WhyChooseUsSection />
-        <PortfolioSection />
+        <PricingSection />
         <ProcessSection />
         <FaqSection />
         <TestimonialsSection />

@@ -8,7 +8,7 @@ type GhostButtonProps = {
 
 export function GhostButton({
   children,
-  href = "#portfolio",
+  href = "#pricing",
   className = "",
 }: GhostButtonProps) {
   return (

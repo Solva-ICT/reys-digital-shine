@@ -24,11 +24,12 @@ export type WhyItem = {
   desc: string;
 };
 
-export type PortfolioItem = {
-  title: string;
-  tag: string;
-  tall?: boolean;
-  gradient: string;
+export type PricingTier = {
+  name: string;
+  price: number;
+  features: string[];
+  popular?: boolean;
+  cta: string;
 };
 
 export type Review = {
@@ -98,38 +99,25 @@ export const WHY_CHOOSE_US: WhyItem[] = [
   },
 ];
 
-export const PORTFOLIO: PortfolioItem[] = [
+export const PRICING_TIERS: PricingTier[] = [
   {
-    title: "Northwind Corporate",
-    tag: "Website",
-    gradient: "from-navy via-navy-deep to-navy",
+    name: "Starter",
+    price: 150,
+    features: ["12 posts per month", "Basic engagement", "Monthly check-in"],
+    cta: "Choose Starter",
   },
   {
-    title: "Saffron Bistro",
-    tag: "Restaurant",
-    gradient: "from-orange to-orange-soft",
-    tall: true,
+    name: "Growth",
+    price: 300,
+    features: ["20 posts per month", "Ad management", "Bi-weekly reports"],
+    popular: true,
+    cta: "Choose Growth",
   },
   {
-    title: "Loop Commerce",
-    tag: "E-commerce",
-    gradient: "from-navy to-orange",
-  },
-  {
-    title: "Pulse Health App",
-    tag: "Mobile App",
-    gradient: "from-navy-deep to-navy",
-  },
-  {
-    title: "Atlas Analytics",
-    tag: "Dashboard",
-    gradient: "from-orange-soft via-orange to-navy",
-    tall: true,
-  },
-  {
-    title: "Ember Identity",
-    tag: "Branding",
-    gradient: "from-orange to-navy",
+    name: "Premium",
+    price: 500,
+    features: ["Full strategy", "Ads + content + reporting", "Weekly reports"],
+    cta: "Choose Premium",
   },
 ];
 

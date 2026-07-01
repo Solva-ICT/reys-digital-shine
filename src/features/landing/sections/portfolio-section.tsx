@@ -37,9 +37,9 @@ export function PortfolioSection() {
                 <div className="text-xs font-semibold uppercase tracking-wider text-orange">
                   {project.tag}
                 </div>
-                <div className="mt-1 font-semibold text-navy">{project.title}</div>
+                <div className="mt-1 font-semibold text-heading">{project.title}</div>
               </div>
-              <div className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-surface text-navy transition-all group-hover:bg-navy group-hover:text-white">
+              <div className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-surface text-heading transition-all group-hover:bg-navy group-hover:text-white">
                 <ArrowRight className="h-4 w-4" />
               </div>
             </div>

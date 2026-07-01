@@ -12,7 +12,7 @@ export function SectionHeader({ eyebrow, title, sub }: SectionHeaderProps) {
       <span className="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-3 py-1 text-xs font-medium uppercase tracking-wider text-orange">
         {eyebrow}
       </span>
-      <h2 className="mt-4 font-display text-3xl font-bold leading-tight text-navy sm:text-5xl">
+      <h2 className="mt-4 font-display text-3xl font-bold leading-tight text-heading sm:text-5xl">
         {title}
       </h2>
       {sub && <p className="mt-4 text-base text-muted-foreground">{sub}</p>}

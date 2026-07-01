@@ -25,7 +25,7 @@ export function ServicesSection() {
             <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-navy to-navy-deep text-white shadow-[var(--shadow-soft)] transition-transform group-hover:scale-110 group-hover:rotate-3">
               <service.icon className="h-5 w-5" />
             </div>
-            <h3 className="mt-5 text-lg font-semibold text-navy">{service.title}</h3>
+            <h3 className="mt-5 text-lg font-semibold text-heading">{service.title}</h3>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{service.desc}</p>
             <div className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-orange opacity-0 transition-opacity group-hover:opacity-100">
               Learn more <ArrowRight className="h-3.5 w-3.5" />

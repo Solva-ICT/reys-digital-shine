@@ -36,7 +36,7 @@ export function ContactFormSection() {
           <span className="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-3 py-1 text-xs font-medium uppercase tracking-wider text-orange">
             Get in touch
           </span>
-          <h2 className="mt-4 font-display text-3xl font-bold leading-tight text-navy sm:text-5xl">
+          <h2 className="mt-4 font-display text-3xl font-bold leading-tight text-heading sm:text-5xl">
             Let's build something <span className="text-gradient-brand">great together</span>.
           </h2>
           <p className="mt-4 text-muted-foreground">
@@ -53,7 +53,7 @@ export function ContactFormSection() {
               </div>
               <div>
                 <div className="text-sm font-medium text-muted-foreground">Email us</div>
-                <div className="font-semibold text-navy">{SITE.email}</div>
+                <div className="font-semibold text-heading">{SITE.email}</div>
               </div>
             </a>
             <a
@@ -67,7 +67,7 @@ export function ContactFormSection() {
               </div>
               <div>
                 <div className="text-sm font-medium text-muted-foreground">WhatsApp</div>
-                <div className="font-semibold text-navy">{SITE.phoneDisplay}</div>
+                <div className="font-semibold text-heading">{SITE.phoneDisplay}</div>
               </div>
             </a>
           </div>
@@ -78,13 +78,13 @@ export function ContactFormSection() {
         >
           <div className="space-y-4">
             <div>
-              <label htmlFor="name" className="mb-1.5 block text-sm font-medium text-navy">
+              <label htmlFor="name" className="mb-1.5 block text-sm font-medium text-heading">
                 Full name
               </label>
               <Input id="name" name="name" required placeholder="Jane Smith" className="h-11 rounded-xl" />
             </div>
             <div>
-              <label htmlFor="email" className="mb-1.5 block text-sm font-medium text-navy">
+              <label htmlFor="email" className="mb-1.5 block text-sm font-medium text-heading">
                 Email address
               </label>
               <Input
@@ -97,13 +97,13 @@ export function ContactFormSection() {
               />
             </div>
             <div>
-              <label htmlFor="service" className="mb-1.5 block text-sm font-medium text-navy">
+              <label htmlFor="service" className="mb-1.5 block text-sm font-medium text-heading">
                 Service interested in
               </label>
               <select
                 id="service"
                 name="service"
-                className="flex h-11 w-full rounded-xl border border-input bg-transparent px-3 text-sm focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+                className="flex h-11 w-full rounded-xl border border-input bg-card px-3 text-sm text-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
               >
                 <option value="">Select a service</option>
                 {SERVICES.map((service) => (
@@ -114,7 +114,7 @@ export function ContactFormSection() {
               </select>
             </div>
             <div>
-              <label htmlFor="message" className="mb-1.5 block text-sm font-medium text-navy">
+              <label htmlFor="message" className="mb-1.5 block text-sm font-medium text-heading">
                 Project details
               </label>
               <Textarea

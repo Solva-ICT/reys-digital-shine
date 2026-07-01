@@ -12,7 +12,7 @@ export function ClientLogosSection() {
             {[...CLIENTS, ...CLIENTS].map((name, index) => (
               <span
                 key={index}
-                className="font-display text-lg font-semibold text-navy/50 transition-colors hover:text-navy sm:text-xl"
+                className="font-display text-lg font-semibold text-heading/50 transition-colors hover:text-heading sm:text-xl"
               >
                 {name}
               </span>

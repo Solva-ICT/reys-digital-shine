@@ -27,7 +27,7 @@ export function FaqSection() {
         >
           {FAQS.map((faq, index) => (
             <AccordionItem key={faq.q} value={`item-${index}`}>
-              <AccordionTrigger className="text-left font-semibold text-navy hover:no-underline">
+              <AccordionTrigger className="text-left font-semibold text-heading hover:no-underline">
                 {faq.q}
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground">{faq.a}</AccordionContent>

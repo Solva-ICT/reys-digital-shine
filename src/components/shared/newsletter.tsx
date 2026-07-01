@@ -10,7 +10,7 @@ export function Newsletter() {
 
   return (
     <div className="rounded-2xl border border-border bg-surface p-6">
-      <div className="text-sm font-semibold text-navy">Stay in the loop</div>
+      <div className="text-sm font-semibold text-heading">Stay in the loop</div>
       <p className="mt-1 text-sm text-muted-foreground">
         Monthly tips on web, ads, and brand growth.
       </p>

@@ -39,7 +39,7 @@ export function TestimonialsSection() {
                       <Star key={index} className="h-4 w-4 fill-current" />
                     ))}
                   </div>
-                  <p className="mt-5 font-display text-xl leading-relaxed text-navy sm:text-2xl">
+                  <p className="mt-5 font-display text-xl leading-relaxed text-heading sm:text-2xl">
                     “{review.quote}”
                   </p>
                   <div className="mt-6 flex items-center gap-3">
@@ -50,7 +50,7 @@ export function TestimonialsSection() {
                         .join("")}
                     </div>
                     <div>
-                      <div className="font-semibold text-navy">{review.name}</div>
+                      <div className="font-semibold text-heading">{review.name}</div>
                       <div className="text-sm text-muted-foreground">{review.role}</div>
                     </div>
                   </div>

@@ -1,6 +1,6 @@
 export function WorkflowIllustration() {
   return (
-    <svg viewBox="0 0 520 360" className="h-auto w-full">
+    <svg viewBox="0 0 520 360" className="h-auto w-full dark:opacity-75 dark:saturate-[0.85]">
       <defs>
         <linearGradient id="g1" x1="0" x2="1">
           <stop offset="0" stopColor="#0B2F6B" />

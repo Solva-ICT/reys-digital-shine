@@ -29,7 +29,7 @@ export function SiteFooter() {
           </div>
         </div>
         <div>
-          <div className="text-sm font-semibold text-navy">Quick links</div>
+          <div className="text-sm font-semibold text-heading">Quick links</div>
           <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
             {MAIN_NAV.map((item) => (
               <li key={item.label}>
@@ -41,7 +41,7 @@ export function SiteFooter() {
           </ul>
         </div>
         <div>
-          <div className="text-sm font-semibold text-navy">Services</div>
+          <div className="text-sm font-semibold text-heading">Services</div>
           <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
             {SERVICES.map((service) => (
               <li key={service.title}>

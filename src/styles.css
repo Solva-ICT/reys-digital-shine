@@ -38,6 +38,7 @@
   --color-orange: var(--orange);
   --color-orange-soft: var(--orange-soft);
   --color-surface: var(--surface);
+  --color-heading: var(--heading);
 
   --font-display: "Space Grotesk", "Poppins", ui-sans-serif, system-ui, sans-serif;
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
@@ -45,16 +46,28 @@
   --shadow-soft: 0 1px 2px rgba(11, 47, 107, 0.04), 0 8px 24px -8px rgba(11, 47, 107, 0.08);
   --shadow-card: 0 1px 2px rgba(11, 47, 107, 0.05), 0 12px 40px -12px rgba(11, 47, 107, 0.12);
   --shadow-glow: 0 20px 60px -20px rgba(245, 124, 0, 0.45);
+  --animate-shiny-text: shiny-text 8s infinite;
+  @keyframes shiny-text {
+  0%, 90%, 100% {
+    background-position: calc(-100% - var(--shiny-width)) 0;
+    }
+  30%, 60% {
+    background-position: calc(100% + var(--shiny-width)) 0;
+    }
+  }
 }
 
 :root {
   --radius: 1rem;
 
-  /* Brand */
+  /* Brand — always the REYS blue/orange (backgrounds, gradients, icons) */
   --navy: oklch(0.30 0.13 263);          /* #0B2F6B */
   --navy-deep: oklch(0.22 0.10 263);
   --orange: oklch(0.70 0.18 50);          /* #F57C00 */
   --orange-soft: oklch(0.82 0.13 60);
+
+  /* Semantic text — headings use brand navy in light mode */
+  --heading: oklch(0.30 0.13 263);
 
   --background: oklch(1 0 0);
   --surface: oklch(0.985 0.004 250);      /* #F8FAFC */
@@ -85,41 +98,45 @@
 }
 
 .dark {
-  --navy: oklch(0.88 0.06 263);
-  --navy-deep: oklch(0.72 0.10 263);
-  --orange: oklch(0.74 0.18 50);
-  --orange-soft: oklch(0.65 0.14 55);
+  /* Brand blues stay blue — used on cards, icons, and CTA gradients */
+  --navy: oklch(0.48 0.12 263);
+  --navy-deep: oklch(0.34 0.10 263);
+  --orange: oklch(0.74 0.19 50);
+  --orange-soft: oklch(0.62 0.15 55);
 
-  --background: oklch(0.16 0.03 263);
-  --surface: oklch(0.20 0.035 263);
-  --foreground: oklch(0.95 0.01 250);
+  /* Light headings on dark surfaces */
+  --heading: oklch(0.96 0.008 250);
 
-  --card: oklch(0.22 0.04 263);
-  --card-foreground: oklch(0.95 0.01 250);
-  --popover: oklch(0.22 0.04 263);
-  --popover-foreground: oklch(0.95 0.01 250);
+  --background: oklch(0.11 0.018 265);
+  --surface: oklch(0.15 0.022 265);
+  --foreground: oklch(0.91 0.012 250);
 
-  --primary: oklch(0.74 0.18 50);
-  --primary-foreground: oklch(0.16 0.03 263);
-  --secondary: oklch(0.28 0.04 263);
-  --secondary-foreground: oklch(0.95 0.01 250);
+  --card: oklch(0.18 0.026 265);
+  --card-foreground: oklch(0.91 0.012 250);
+  --popover: oklch(0.18 0.026 265);
+  --popover-foreground: oklch(0.91 0.012 250);
 
-  --muted: oklch(0.26 0.035 263);
-  --muted-foreground: oklch(0.72 0.02 250);
-  --accent: oklch(0.28 0.05 263);
-  --accent-foreground: oklch(0.95 0.01 250);
+  --primary: oklch(0.74 0.19 50);
+  --primary-foreground: oklch(0.11 0.018 265);
+  --secondary: oklch(0.22 0.028 265);
+  --secondary-foreground: oklch(0.91 0.012 250);
 
-  --destructive: oklch(0.55 0.22 27);
+  --muted: oklch(0.21 0.024 265);
+  --muted-foreground: oklch(0.70 0.018 250);
+  --accent: oklch(0.24 0.032 265);
+  --accent-foreground: oklch(0.91 0.012 250);
+
+  --destructive: oklch(0.58 0.22 27);
   --destructive-foreground: oklch(0.98 0 0);
   --success: oklch(0.68 0.17 162);
 
-  --border: oklch(1 0 0 / 12%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.74 0.18 50);
+  --border: oklch(0.55 0.025 265 / 22%);
+  --input: oklch(0.55 0.025 265 / 28%);
+  --ring: oklch(0.74 0.19 50);
 
-  --shadow-soft: 0 1px 2px rgba(0, 0, 0, 0.2), 0 8px 24px -8px rgba(0, 0, 0, 0.35);
-  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.25), 0 12px 40px -12px rgba(0, 0, 0, 0.45);
-  --shadow-glow: 0 20px 60px -20px rgba(245, 124, 0, 0.35);
+  --shadow-soft: 0 1px 2px rgba(0, 0, 0, 0.35), 0 8px 24px -8px rgba(0, 0, 0, 0.45);
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.4), 0 12px 40px -12px rgba(0, 0, 0, 0.55);
+  --shadow-glow: 0 20px 60px -20px rgba(245, 124, 0, 0.4);
 }
 
 @layer base {
@@ -139,7 +156,7 @@
 }
 
 @utility text-gradient-brand {
-  background-image: linear-gradient(115deg, var(--navy) 0%, var(--navy) 40%, var(--orange) 100%);
+  background-image: linear-gradient(115deg, var(--heading) 0%, var(--heading) 40%, var(--orange) 100%);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
@@ -158,9 +175,9 @@
 }
 
 @utility glass {
-  background-color: color-mix(in oklab, var(--card) 75%, transparent);
-  backdrop-filter: saturate(180%) blur(14px);
-  border: 1px solid color-mix(in oklab, var(--border) 80%, transparent);
+  background-color: color-mix(in oklab, var(--card) 82%, transparent);
+  backdrop-filter: saturate(160%) blur(16px);
+  border: 1px solid color-mix(in oklab, var(--border) 90%, transparent);
 }
 
 @keyframes float-slow {

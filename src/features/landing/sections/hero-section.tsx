@@ -1,6 +1,9 @@
+import { ArrowRight } from "lucide-react";
+
 import heroIllustration from "@/assets/hero-illustration.png";
 import { GhostButton } from "@/components/shared/ghost-button";
 import { PrimaryButton } from "@/components/shared/primary-button";
+import { AnimatedShinyText } from "@/components/ui/animated-shiny-text";
 import { HexagonPattern } from "@/components/ui/hexagon-pattern";
 import { cn } from "@/lib/utils";
 
@@ -21,7 +24,7 @@ export function HeroSection() {
         ]}
         className={cn(
           "inset-x-0 top-0 bottom-auto z-0 h-[min(48%,480px)] skew-y-3",
-          "text-navy/15 dark:text-orange/18",
+          "text-navy/12 dark:text-orange/15",
           "[&_polygon]:stroke-current [&_polygon]:stroke-[0.75]",
           "[&_polygon:not(.fill-none)]:fill-current/10",
           "[mask-image:radial-gradient(ellipse_55%_50%_at_50%_35%,white,transparent)]",
@@ -34,11 +37,18 @@ export function HeroSection() {
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6">
         <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
-          <span className="inline-flex items-center gap-2 rounded-full border border-border bg-card/70 px-3 py-1 text-xs font-medium text-navy shadow-[var(--shadow-soft)] backdrop-blur">
-            <span className="h-1.5 w-1.5 rounded-full bg-orange" />
-            Premium Digital Agency
-          </span>
-          <h1 className="mt-6 font-display text-4xl font-bold leading-[1.05] tracking-tight text-navy sm:text-6xl md:text-7xl">
+          <div
+            className={cn(
+              "group inline-flex items-center rounded-full border border-border bg-card/70 shadow-[var(--shadow-soft)] backdrop-blur transition-all ease-in hover:border-orange/30 hover:bg-card/90",
+            )}
+          >
+            <AnimatedShinyText className="inline-flex items-center gap-2 px-3 py-1 text-xs font-medium text-muted-foreground transition ease-out hover:text-heading hover:duration-300">
+              <span className="h-1.5 w-1.5 rounded-full bg-orange" />
+              Premium Digital Agency
+              <ArrowRight className="h-3 w-3 transition-transform duration-300 ease-in-out group-hover:translate-x-0.5" />
+            </AnimatedShinyText>
+          </div>
+          <h1 className="mt-6 font-display text-4xl font-bold leading-[1.05] tracking-tight text-heading sm:text-6xl md:text-7xl">
             We Build Digital
             <br />
             Experiences That <span className="text-gradient-brand">Grow Your Business.</span>

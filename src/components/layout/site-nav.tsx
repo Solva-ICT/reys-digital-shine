@@ -33,7 +33,7 @@ export function SiteNav() {
                 <a
                   key={item.label}
                   href={item.href}
-                  className="rounded-lg px-3 py-2 text-sm font-medium text-foreground/70 transition-colors hover:bg-surface hover:text-navy"
+                  className="rounded-lg px-3 py-2 text-sm font-medium text-foreground/70 transition-colors hover:bg-surface hover:text-heading"
                 >
                   {item.label}
                 </a>
@@ -53,7 +53,7 @@ export function SiteNav() {
             </div>
             <button
               onClick={() => setOpen((v) => !v)}
-              className="inline-flex items-center justify-center rounded-xl border border-border bg-card p-2 text-navy md:hidden"
+              className="inline-flex items-center justify-center rounded-xl border border-border bg-card p-2 text-heading md:hidden"
               aria-label="Toggle menu"
             >
               {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}

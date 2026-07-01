@@ -24,7 +24,7 @@ export function ProcessSection() {
                   </span>
                   <span className="absolute -bottom-1 -right-1 h-3 w-3 rounded-full bg-orange shadow-[0_0_0_4px_rgba(245,124,0,0.15)]" />
                 </div>
-                <div className="mt-4 font-semibold text-navy">{step}</div>
+                <div className="mt-4 font-semibold text-heading">{step}</div>
               </li>
             ))}
           </ol>

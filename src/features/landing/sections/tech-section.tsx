@@ -12,7 +12,7 @@ export function TechSection() {
             {[...TECH_STACK, ...TECH_STACK].map((tech, index) => (
               <span
                 key={index}
-                className="font-display text-2xl font-semibold text-navy/40 transition-colors hover:text-navy"
+                className="font-display text-2xl font-semibold text-heading/40 transition-colors hover:text-heading"
               >
                 {tech}
               </span>

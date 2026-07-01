@@ -132,26 +132,26 @@ export const PROCESS_STEPS = [
 
 export const REVIEWS: Review[] = [
   {
-    name: "Amelia Carter",
-    role: "Founder, Lumen Studio",
+    name: "Hodan Ahmed",
+    role: "Founder, Barwaaqo Creative",
     quote:
       "REYS rebuilt our site and ad funnel in six weeks. Leads tripled and the brand finally looks like the business we want to be.",
   },
   {
-    name: "Daniel Ortega",
-    role: "CMO, Northwind Group",
+    name: "Abdi Hassan",
+    role: "CMO, Horn Trade Group",
     quote:
       "Strategic, transparent, and genuinely creative. The closest thing to an in-house team without the overhead.",
   },
   {
-    name: "Priya Shah",
-    role: "Owner, Saffron Bistro",
+    name: "Mohamed Adan",
+    role: "Software Engineer, Jamhuriya Technology Solutions (JTech)",
     quote:
-      "Our online orders doubled the month after launch. They cared about our business outcomes, not just the design.",
+      "Working on real-world digital systems that support businesses and public services has shown me how impactful well-built software can be in Somalia’s growing tech ecosystem.",
   },
   {
-    name: "Marcus Lee",
-    role: "Head of Growth, Loop",
+    name: "Mohamed Nur",
+    role: "Head of Growth, Dalmar Tech",
     quote:
       "From the first call it felt like working with senior partners. Quality, speed, and ROI — all three.",
   },

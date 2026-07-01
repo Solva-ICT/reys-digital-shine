@@ -1,6 +1,7 @@
-import { ArrowUp, MessageCircle } from "lucide-react";
+import { ArrowUp } from "lucide-react";
 import { useEffect, useState } from "react";
 
+import { WhatsAppIcon } from "@/components/shared/whatsapp-icon";
 import { SITE } from "@/config/site";
 
 export function BackToTop() {
@@ -35,7 +36,7 @@ export function WhatsAppFloat() {
       className="fixed bottom-6 right-6 z-40 inline-flex h-14 w-14 items-center justify-center rounded-full bg-green-500 text-white shadow-lg transition-transform hover:scale-105 hover:shadow-xl"
       aria-label="Chat on WhatsApp"
     >
-      <MessageCircle className="h-6 w-6" />
+      <WhatsAppIcon className="h-7 w-7" />
     </a>
   );
 }

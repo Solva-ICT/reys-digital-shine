@@ -1,6 +1,8 @@
-import { Mail, MessageCircle, Send } from "lucide-react";
+import { Mail, Send } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
+
+import { WhatsAppIcon } from "@/components/shared/whatsapp-icon";
 
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -63,7 +65,7 @@ export function ContactFormSection() {
               className="flex items-center gap-3 rounded-2xl border border-border bg-card p-4 transition-colors hover:border-orange/40"
             >
               <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-green-500/10 text-green-600 dark:text-green-400">
-                <MessageCircle className="h-5 w-5" />
+                <WhatsAppIcon className="h-5 w-5" />
               </div>
               <div>
                 <div className="text-sm font-medium text-muted-foreground">WhatsApp</div>

@@ -1,4 +1,4 @@
-import reysLogo from "@/assets/reys-logo.png";
+import reysLogo from "@/assets/5714565a-5f41-4d8a-948a-75fe14f755c6.png";
 
 type LogoProps = {
   className?: string;
@@ -6,12 +6,12 @@ type LogoProps = {
 
 export function Logo({ className = "" }: LogoProps) {
   return (
-    <a href="#home" className={`flex items-center gap-2.5 ${className}`}>
-      <img src={reysLogo} alt="REYS Digital Agency" className="h-9 w-9 object-contain" />
-      <span className="font-display text-lg font-bold tracking-tight text-heading">
-        REYS
-        <span className="ml-1 text-xs font-medium text-muted-foreground">Digital Agency</span>
-      </span>
+    <a href="#home" className={`inline-flex items-center ${className}`}>
+      <img
+        src={reysLogo}
+        alt="REYS Digital Agency"
+        className="h-10 w-auto max-w-[200px] object-contain sm:h-11 sm:max-w-[220px]"
+      />
     </a>
   );
 }

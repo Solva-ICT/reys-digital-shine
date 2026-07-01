@@ -1,5 +1,4 @@
-import { SectionHeader } from "@/components/shared/section-header";
-import { WorkflowIllustration } from "@/components/shared/workflow-illustration";
+import whyChooseUsImage from "@/assets/istockphoto-1204743098-612x612.jpg";
 import { WHY_CHOOSE_US } from "@/config/landing-content";
 
 export function WhyChooseUsSection() {
@@ -8,8 +7,14 @@ export function WhyChooseUsSection() {
       <div className="mx-auto grid max-w-7xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-2">
         <div className="relative">
           <div className="absolute inset-0 -z-10 rounded-[36px] bg-[radial-gradient(closest-side,rgba(245,124,0,0.18),transparent_70%)] blur-2xl" />
-          <div className="relative overflow-hidden rounded-3xl border border-border bg-card p-6 shadow-[var(--shadow-card)]">
-            <WorkflowIllustration />
+          <div className="relative overflow-hidden rounded-3xl border border-border bg-card shadow-[var(--shadow-card)]">
+            <img
+              src={whyChooseUsImage}
+              alt="Business handshake over a city skyline representing partnership and growth"
+              width={612}
+              height={612}
+              className="aspect-square w-full object-cover"
+            />
           </div>
         </div>
         <div>
